@@ -6,7 +6,7 @@ Bienvenido/a al repositorio del taller práctico presencial "MRI: Procesando tu 
 
 En este repositorio encontrarás información, datos y cuadernos de trabajos relacionados al taller práctico.
 
-Este respositorio esta licenciado abiertamente por Pablo Irrarázaval, Guillermo Sahonero, Boris Oróstica y Pierre Padilla, basándose en [Creative Commons Attribution 4.0 International License][cc-by]
+Este repositorio esta licenciado abiertamente por Pablo Irrarázaval, Guillermo Sahonero, Boris Oróstica y Pierre Padilla, basándose en [Creative Commons Attribution 4.0 International License][cc-by]
 
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
