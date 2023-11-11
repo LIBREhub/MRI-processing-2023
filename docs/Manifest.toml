@@ -2,7 +2,7 @@
 
 julia_version = "1.9.3"
 manifest_format = "2.0"
-project_hash = "e0c77beb18dc1f6cce661ebd60658c0c1a77390f"
+project_hash = "644937e85cc748e6b8b7e468ff984334211e16ae"
 
 [[deps.ANSIColoredPrinters]]
 git-tree-sha1 = "574baf8110975760d391c710b6341da1afa48d8c"
@@ -93,6 +93,11 @@ uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 
 [[deps.Logging]]
 uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
+
+[[deps.MRIprocessing2023]]
+path = "C:\\Users\\beorostica\\Nextcloud2\\ihealth\\MRI-processing-2023"
+uuid = "aca5c4ea-6927-4b1e-8d89-87f8e8c92370"
+version = "0.1.0"
 
 [[deps.Markdown]]
 deps = ["Base64"]
