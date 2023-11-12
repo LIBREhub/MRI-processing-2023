@@ -14,6 +14,5 @@ Este es el **enlace a la página web del curso**: [https://librehub.github.io/MR
 
  Nos gustaría agradecer a [Chan Zuckerberg Initiative](https://chanzuckerberg.com/imaging/latin-american-hub-for-bioimaging-through-open-hardware/), a través del proyecto [LIBRE hub](https://librehub.github.io/), por el soporte financiero y a la [Pontificia Universidad Católica de Chile](https://www.uc.cl/en), a través del [Instituto de Ingeniería Biológica y Médica](https://ingenieriabiologicaymedica.uc.cl/en/), por facilitar el uso de sus instalaciones para el curso.
 
-<br>
 
-![img.png](logo.png)
+![img.png](./assets/logo.png)
