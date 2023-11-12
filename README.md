@@ -15,4 +15,4 @@ Here is the **link to the course webpage**: [https://librehub.github.io/MRI-proc
 
 We would like to thank the [Chan Zuckerberg Initiative](https://chanzuckerberg.com/imaging/latin-american-hub-for-bioimaging-through-open-hardware/) through the [LIBRE hub](https://librehub.github.io/) project for the financial support and the [Pontificia Universidad Católica de Chile](https://www.uc.cl/en) through the [Institute of Biological and Medical Engineering](https://ingenieriabiologicaymedica.uc.cl/en/) for providing facilities for the course.
 
-![img.png](./assets/logo.png)
+![](./docs/src/assets/logo.png)
