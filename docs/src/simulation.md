@@ -1,5 +1,8 @@
 # Simulation
 
+!!! note
+    This page is under construction.
+
 This section delves into some details about how a sequence is constructed. The sequence definition in **KomaMRI** is strongly related to the [Pulseq](https://pulseq.github.io/index.html) definition. After reading this section, you should be able to create your own **Sequence** structs for conducting custom simulations using the **KomaMRI** package.
 
 ## Sequence Overview
