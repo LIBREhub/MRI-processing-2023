@@ -10,13 +10,13 @@ makedocs(
     pages = [
         "MRI: Processing your Data" => "index.md";
         "Course Preparation" => "getting-started.md";
-        "Fundamentals of the MRI Signal" => "fundamentals-of-the-mri-signal.md";
-        "Simulation" => "simulation.md";
-        "Basic Signal Processing" => "basic-signal-processing.md";
-        "Parallel Imaging" => "parallel-imaging.md";
-        "Compress Sensing" => "compress-sensing.md";
-        "Quantitative Mapping" => "quantitative-mapping.md";
-        "Off-Resonance Correction" => "off-resonance-correction.md";
+        #"Fundamentals of the MRI Signal" => "fundamentals-of-the-mri-signal.md";
+        #"Simulation" => "simulation.md";
+        #"Basic Signal Processing" => "basic-signal-processing.md";
+        #"Parallel Imaging" => "parallel-imaging.md";
+        #"Compress Sensing" => "compress-sensing.md";
+        #"Quantitative Mapping" => "quantitative-mapping.md";
+        #"Off-Resonance Correction" => "off-resonance-correction.md";
     ],
 )
 

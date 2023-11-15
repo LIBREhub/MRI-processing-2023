@@ -1,4 +1,6 @@
-# Getting Started
+# Course Preparation
+
+Throughout this workshop, we will use the **Julia Programming Language** and the **Pluto** module as our programming environment. Let's install these tools on our computers.
 
 ## Installing Julia
 
@@ -9,6 +11,8 @@ Once **Julia** is installed, open the **Julia REPL** (this process differs depen
 ```@raw html
 <img src="../assets/julia-repl-windows.png" alt="" style="width:35%;"><img src="../assets/julia-repl.png" alt="" style="width:65%;">
 ```
+
+There are many tutorials on the internet for programming in the **Julia** language. We recommend you refer to [the official tutorials](https://julialang.org/learning/tutorials/) or this simple [beginner tutorial](https://www.freecodecamp.org/news/learn-julia-programming-language/)."
 
 ## Installing Pluto
 
