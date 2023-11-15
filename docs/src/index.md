@@ -6,7 +6,7 @@
 
 Welcome to the documentation of the hands-on workshop "MRI: Processing Your Data", taking place on November 20 and 21, 2023, at the San Joaquin Campus of the Pontificia Universidad Católica de Chile.
 
-In this documentation, you will find information, data, and examples related to the hands-on workshop. You can also go to the [github repository](https://github.com/LIBREhub/MRI-processing-2023) to find source code and additional resources.
+In this documentation, you will find information, data, and examples related to the hands-on workshop.
 
 It specifically aims for scientists and students working with MRI related topics. We presume the attendees have some basic programming and signal processing skills. To get everyone on the same level, we start with **Julia** programming basics.
 
