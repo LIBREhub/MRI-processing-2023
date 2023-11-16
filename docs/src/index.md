@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Welcome to the documentation of the hands-on workshop "MRI: Processing Your Data", taking place on November 20 and 21, 2023, at the San Joaquin Campus of the Pontificia Universidad Católica de Chile.
+Welcome to the documentation of the hands-on workshop "MRI: Processing Your Data", taking place on November 20 and 21, 2023, at the [San Joaquin Campus](https://goo.gl/maps/A3tZ8nWY6jSYH3LK7) of the Pontificia Universidad Católica de Chile.
 
 In this documentation, you will find information, data, and examples related to the hands-on workshop.
 
@@ -14,11 +14,15 @@ It specifically aims for scientists and students working with MRI related topics
     Before the course starts, all participants are required to have **Julia** and **Pluto** installed, [please see the course preparation page](getting-started.md).
 
 
-## Time Table
+## Time Table and Map
 
-All following times are in Chilean (Santiago) time (currently GMT-4). [Look up your related time here](https://timezonewizard.com/tn-75s), so you don't miss anything.
+All following times are in Chilean (Santiago) time (currently GMT-4). [Look up your related time here](https://timezonewizard.com/tn-75s), so you don't miss anything. To find the rooms of the workshop, you can download a [PDF](https://vidauniversitaria.uc.cl/395-mapa-campussj-2022/file) version of the San Joaquin campus or visit our [virtual map](https://librehub.github.io/2023/08/01/mri-data-ws.html).
 
-### Day 1 - Monday the 20th of November 2023
+!!! note
+    We recommend arriving on the campus at least 15 minutes before the beginning of the sessions because some buildings are far from the main entrance.
+
+
+### Day 1 - Monday the 20th of November 2023 / Place: Sala de clase AP102, Edificio de Aulas Las Pataguas
 
 | Time  | Activities/Topics                        | Presenters                      |
 |:-----:|:----------------------------------------:|:-------------------------------:|
@@ -35,7 +39,7 @@ All following times are in Chilean (Santiago) time (currently GMT-4). [Look up y
 | 17:00 | [Hands-on: Basic Signal Processing](basic-signal-processing.md)        | Belén Bravo                     |
 | 18:00 | Adjourn                                  | -                               |
 
-### Day 2 - Tuesday the 21th of November 2023
+### Day 2 - Tuesday the 21th of November 2023 / Place: Sala de estudios, Edificio Raul Deves
 
 | Time  | Activities/Topics                                           | Presenters                             |
 |:-----:|:-----------------------------------------------------------:|:--------------------------------------:|
