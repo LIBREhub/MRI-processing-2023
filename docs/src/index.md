@@ -46,8 +46,8 @@ All following times are in Chilean (Santiago) time (currently GMT-4). [Look up y
 | 09:15 | Theory: Undersampled Reconstruction with Parallel Imaging   | Pablo Irarrázaval / Ronal Coronado     |
 | 10:00 | [Hands-on: Undersampled Reconstruction with Parallel Imaging](parallel-imaging.md) | Ronal Coronado                         |
 | 10:45 | Break                                                       | -                                      |
-| 11:00 | Theory: Undersampled Reconstruction with Compress Sensing   | Pablo Irarrázaval / Belén Bravo        |
-| 11:45 | [Hands-on: Undersampled Reconstruction with Compress Sensing](compress-sensing.md) | Belén Bravo                            |
+| 11:00 | Theory: Undersampled Reconstruction with Compressed Sensing   | Pablo Irarrázaval / Belén Bravo        |
+| 11:45 | [Hands-on: Undersampled Reconstruction with Compressed Sensing](compressed-sensing.md) | Belén Bravo                            |
 | 12:30 | Launch                                                      | -                                      |
 | 13:30 | Theory: Quantitative Mapping                                | Pablo Irarrázaval / Guillermo Sahonero |
 | 14:15 | [Hands-on: Quantitative Mapping](quantitative-mapping.md)                              | Guillermo Sahonero                     |
