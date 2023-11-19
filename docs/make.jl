@@ -14,7 +14,7 @@ makedocs(
         #"Simulation" => "simulation.md";
         #"Basic Signal Processing" => "basic-signal-processing.md";
         #"Parallel Imaging" => "parallel-imaging.md";
-        #"Compress Sensing" => "compress-sensing.md";
+        #"Compress Sensing" => "compressed-sensing.md";
         #"Quantitative Mapping" => "quantitative-mapping.md";
         #"Off-Resonance Correction" => "off-resonance-correction.md";
     ],

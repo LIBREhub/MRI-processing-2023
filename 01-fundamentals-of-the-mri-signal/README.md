@@ -1,4 +1,3 @@
 # Fundamentals of the MRI Signal
 
-!!! note
-    This page is under construction.
+This directory contains resources for this section of the workshop.
