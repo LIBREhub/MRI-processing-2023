@@ -66,3 +66,50 @@ Write the following in your **Pluto Notebook** and run it (this example is taken
 ```
 
 All done! You have successfully written a **Julia** program in the **Pluto** environment.
+
+
+## Using notebooks from this workshop
+
+In this workshop, you will be working with notebooks available in the [GitHub repository](https://github.com/LIBREhub/MRI-processing-2023), each aligned with the topic of a specific session.
+
+To run these notebooks on your local computer, navigate to the session of your interest:
+```@raw html
+<center><img src="../assets/github-open-session.png" alt="" style="width:100%;"></center>
+```
+
+
+Next, open the **Pluto** notebook file with the `.jl` extension:
+```@raw html
+<center><img src="../assets/github-open-notebook.png" alt="" style="width:100%;"></center>
+```
+
+
+Next, download the notebook:
+```@raw html
+<center><img src="../assets/github-download-notebook.png" alt="" style="width:100%;"></center>
+```
+
+
+A **Pluto** notebook file should be stored in your computer's `Downloads` folder.
+
+Next, run **Pluto**:
+```julia-repl
+julia> using Pluto
+
+julia> Pluto.run()
+```
+
+
+In the **Pluto** dashboard, drag and drop the **Pluto** notebook file:
+```@raw html
+<center><img src="../assets/github-pluto-drag-and-drop.gif" alt="" style="width:100%;"></center>
+```
+
+
+Finally, click on the button labeled `Run notebook code` to execute the **Julia** code:
+```@raw html
+<center><img src="../assets/github-pluto-run.png" alt="" style="width:100%;"></center>
+```
+
+
+All done! Feel free to play around with these notebooks during the workshop.
