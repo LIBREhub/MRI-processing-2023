@@ -11,7 +11,7 @@ makedocs(
         "MRI: Processing your Data" => "index.md";
         "Course Preparation" => "getting-started.md";
         "Fundamentals of the MRI Signal" => "fundamentals-of-the-mri-signal.md";
-        #"Simulation" => "simulation.md";
+        "Simulation" => "simulation.md";
         #"Basic Signal Processing" => "basic-signal-processing.md";
         #"Parallel Imaging" => "parallel-imaging.md";
         #"Compress Sensing" => "compressed-sensing.md";
