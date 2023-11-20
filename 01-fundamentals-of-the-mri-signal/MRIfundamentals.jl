@@ -68,24 +68,27 @@ md"""
 ## 2. Estrategia de muestreo (trayectoria en espacio k)
 Se asume una trayectoria cartesiana con $N_y$ codificaciones de fase separadas en $1/FOV_y$. Cada lectura tiene $N_x$ muestras separadas en $1/FOV_x$.
 
-Pruebe con diferentes FOV y resoluciones.
+* Encuentre factorx y factory de manera que kx y ky tengan las dimensiones correctas en 1/cm, de acuerdo al FOV y N escogido.
+* Pruebe con diferentes FOV y resoluciones.
 
 """
 
 # ╔═╡ 32bbc77e-7d22-4103-8d56-258310cf4d9e
 begin
 	# Students should play with different FOV:
-	FOVx = 25; FOVy = 25; # FOV in cm
+	FOVx = 25; FOVy = 12; # FOV in cm
 	# Students should play with different resolutions:
-	Nx = 256; Ny = 256; # number of pixels
+	Nx = 256; Ny = 128; # number of pixels
 	nothing
 end
 
 # ╔═╡ 01654d09-ca0f-41e2-9a4d-510acf8d4700
 # Genera el espacio k
 begin
-	kxline = (-(Nx-1)/2:(Nx-1)/2) / FOVx
-	kyline = (-(Ny-1)/2:(Ny-1)/2) / FOVy
+	factorx = 1 # Encuentre el factor correcto aquí
+	factory = 1 # Encuentre el factor correcto aquí
+	kxline = (-(Nx-1)/2:(Nx-1)/2) * factorx
+	kyline = (-(Ny-1)/2:(Ny-1)/2) * factory
 	kx = repeat(kxline', Ny, 1)
 	ky = repeat(kyline, 1, Nx)
 	nothing
@@ -143,6 +146,8 @@ El resultado de la reconstrucción es una matriz de Ny x Nx. El tamaño de cada 
 
 Usaremos 10 pixels por centímetro, y reajustaremos el tamaño de mrec.
 
+* Encuentre el nuevo tamaño de la imagen Npx y Npy de manera que 10 pixels correspondan a un cm. La diferencia se nota cuando la imagen no es cuadrada.
+
 """
 
 # ╔═╡ 5db259b4-f526-4480-8a40-65aafb6bf605
@@ -151,10 +156,11 @@ begin
 	pixelspercm = 10;
 
 	# Ajusta tamaño de la imagen para que los ejes estén en la misma escala
-	Npx, Npy = FOVx * pixelspercm, FOVy * pixelspercm # Nuevo tamaño
+	Npx = Nx # Nuevo tamaño en x (encuéntrelo)
+	Npy = Ny # Nuevo tamaño en y (encuéntrelo)
 	mrectrue = imresize(mrec, (round(Int, Npy), round(Int, Npx)))
-	xlinetrue = (-(Npx-1)/2:(Npx-1)/2) * FOVx / Npx; # Para conocer ejes en cm
-	ylinetrue = (-(Npy-1)/2:(Npy-1)/2) * FOVy / Npy;
+	xlinetrue = (-(Npx-1)/2:(Npx-1)/2) * (1/pixelspercm); # Para conocer ejes en cm
+	ylinetrue = (-(Npy-1)/2:(Npy-1)/2) * (1/pixelspercm);
 	size(mrectrue)
 end
 
@@ -1856,7 +1862,7 @@ version = "1.4.1+1"
 # ╠═a1b54d78-6418-4158-a266-f55ccd761abc
 # ╟─4febee95-c82f-429b-9550-86dc35bde209
 # ╠═411c3176-4915-4626-a87f-8b0a7a639f9f
-# ╟─5baab0ab-37da-4cb8-8d9c-a0e87e76b101
+# ╠═5baab0ab-37da-4cb8-8d9c-a0e87e76b101
 # ╠═5db259b4-f526-4480-8a40-65aafb6bf605
 # ╠═1137fa97-e9b6-4c84-bee4-60d2555ab729
 # ╟─ff4b6756-c7eb-4ef3-8e15-2c56bbe377a6
