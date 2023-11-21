@@ -7,7 +7,6 @@ Go to the resources of [this section in the GitHub repository](https://github.co
 
 Refer to [this section](getting-started.md) to learn how to run the Pluto notebook.
 
-## Hands-on Pluto notebook
 ```@raw html
-<iframe type="text/html" src="../assets/hands-on-simulation.html" style="height:800px;width:100%;">
+<iframe type="text/html" src="../assets/hands-on-simulation.html" style="height:100vh;width:100%;">
 ```
