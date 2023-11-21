@@ -49,7 +49,14 @@ md"""
 > En la siguiente celda importe los datos con los que se trabajará. **Tip**: considere aplicar un *fftshift* a la *raw data*
 """
 
-# ╔═╡ d1e290e5-2cb5-4cf2-a641-19db53a8e9f2
+# ╔═╡ 95685b42-fed5-4ba8-a847-14f059d0ac5f
+begin
+    datos_uv = matread("data/Uv.mat");
+    Uv = datos_uv["Uv"];
+    
+    datos_raw_data = matread("data/raw_data.mat");
+    raw_data = fftshift(datos_raw_data["raw_data"]);
+end;
 
 
 # ╔═╡ 618972ad-68b8-44cb-828f-c5223ded77a0
@@ -57,8 +64,12 @@ md"""
 > A continuación muestre el patrón de submuestreo. Observe que porcentaje del FOV fue muestreado.
 """
 
-# ╔═╡ a9dde605-e5ab-480e-b788-3b0c7e247a67
-
+# ╔═╡ cd9f5f64-7c28-4a3d-b2bf-8695ef1cff2f
+begin
+	lineas_muestreadas = sum(Uv[:,1])
+	heatmap(Uv, color=:grays, c=:grays)
+	title!("Patrón de submuestreo con $lineas_muestreadas lineas muestreadas")
+end
 
 # ╔═╡ 100cc04e-d98b-4cde-bed0-1fabf1334e50
 md"""
@@ -71,16 +82,31 @@ md"""
 > Muestre la reconstrucción obtenida al tomar IDFT de la *raw data*
 """
 
-# ╔═╡ a3370bdf-9cbd-46a9-89b2-9206bb8a808a
-
+# ╔═╡ 1b65cd9e-b957-4254-8889-93a16dff3e45
+begin
+	ifft_raw_data = zeros(size(raw_data));
+	heatmap(abs.(ifft_raw_data), color=:grays, c=:grays)
+	title!("Reconstrucción de raw data con IDFT")
+end
 
 # ╔═╡ 88cafcd5-83f3-40c9-9cb3-6db923239ee2
 md"""
 > Posicione los datos en las líneas correspondientes del patrón de submuestreo y reconstruya nuevamente con IDFT. 
 """
 
-# ╔═╡ 83a28eed-e9f9-4916-b66b-b1386076aa28
-
+# ╔═╡ e68b74c5-a24d-4ef2-a606-e18d326932d7
+begin
+	M_COMPLETE = zeros(Complex{Float64}, 256,256);
+	local contador = 0
+	for i in 1:255
+		if sum(Uv[i,:])!=0
+			contador+=1;
+			M_COMPLETE[i,:].=ones(size(Uv[i,:])) #Cambiar esta línea
+		end
+	end
+	heatmap(abs.(ifft(M_COMPLETE)),color=:grays, c=:grays)
+	title!("Reconstrucción con IDFT en lineas muestreadas")
+end
 
 # ╔═╡ 65a0a2e1-171b-4372-a5ed-422baa227bf9
 md"""
@@ -100,7 +126,7 @@ md"""
 
 	Para resolver el problema de optimización planteado utilizaremos el método de optimización FISTA. El método FISTA está previamente implementado en este notebook y opera de la siguiente forma:
 
-	k_full = FISTA_L1(Uv, k_subsamp, lambda, iters, start)
+	k_full = FISTA _ L1(Uv, k_subsamp, lambda, iters, start)
 
 	Donde:
 	* k_full es el espacio k reconstruido (totalmente muestreado)
@@ -161,8 +187,12 @@ md"""
 > A continuación realice la reconstrucción submuestreada con compressed sensing udando FISTA y muestre sus resultados
 """
 
-# ╔═╡ e8fc86c5-5e76-41d7-903a-d34dc8521f06
-
+# ╔═╡ 5f958dbb-9aba-4de2-a028-3806914d7d9d
+begin
+	M_FISTA = zeros(size(M_COMPLETE)); #Cambiar esta línea llamando a FISTA
+	heatmap(abs.(M_FISTA), color=:grays, c=:grays)
+	title!("Reconstrucción con FISTA")
+end
 
 # ╔═╡ 27a6a6f6-7a42-4d29-8e2e-49e07e883433
 md"""
@@ -182,16 +212,25 @@ md"""
 > En la siguiente celda importe los datos con los que se trabajará. **Tip**: considere aplicar un *fftshift* a la *raw data*
 """
 
-# ╔═╡ 9e6a6941-02ee-462f-bb05-339c108180b3
-
+# ╔═╡ 63056b90-776c-4430-8f58-a6a038ce6446
+begin
+    datos_ut = matread("data/Ut.mat");
+    Ut = datos_ut["Ut"];
+    datos_raw_data_2 = matread("data/raw_data_2.mat");
+    raw_data_2 = fftshift(datos_raw_data_2["raw_data_2"]);
+end;
 
 # ╔═╡ fedb235d-3b95-4ce9-b8f8-63e8b86c19b8
 md"""
 > A continuación muestre el patrón de submuestreo. Observe que porcentaje del FOV fue muestreado.
 """
 
-# ╔═╡ 5dc059d8-c1c6-458d-b7f9-29688696c47d
-
+# ╔═╡ 9fcd0005-dac9-4905-9eb7-2626622b463a
+begin
+	lineas_muestreadas_2 = sum(Ut[:,1])
+	heatmap(Ut, color=:grays, c=:grays)
+	title!("Patrón de submuestreo con $lineas_muestreadas_2 lineas muestreadas")
+end
 
 # ╔═╡ 8a96228c-afee-44ff-bf5b-5d2df3c976cb
 md"""
@@ -204,24 +243,50 @@ md"""
 > Muestre la imagen obtenida al tomar IDFT de la *raw data*
 """
 
-# ╔═╡ 63f06c5f-4ac6-4b3c-8f13-2564a4477e9f
-
+# ╔═╡ c6f60baa-422a-4292-8efa-bebd536f67f5
+begin
+	ifft_raw_data_2 = zeros(size(raw_data_2)); #cambiar esta línea
+	heatmap(abs.(ifft_raw_data_2), color=:grays, c=:grays)
+	title!("Reconstrucción de raw data 2 con IDFT")
+end
 
 # ╔═╡ 67437b27-c4ed-4dfa-90a6-3ddebcb134eb
 md"""
 > Posicione los datos en las líneas correspondientes del patrón de submuestreo y reconstruya nuevamente con IDFT. 
 """
 
-# ╔═╡ c21c0a07-8d14-4686-bd4c-d0642320d245
-
+# ╔═╡ 5c1ad49e-e624-4e1f-9511-be212f0197e7
+begin
+	M_COMPLETE_2 = zeros(Complex{Float64}, 256,256);
+	local contador_2 = 0
+	for i in 1:255
+		if sum(Ut[256-i,:])!=0
+			contador_2+=1;
+			M_COMPLETE_2[i,:].=ones(size(Ut[256-i,:]))#Cambiar esta línea
+		end
+	end
+	heatmap(abs.(ifft(M_COMPLETE_2)),color=:grays, c=:grays)
+	title!("Reconstrucción con IDFT en lineas muestreadas")
+end
 
 # ╔═╡ b07f50cb-dd60-4e41-8c71-d420f1d10726
 md"""
 > A continuación realice la reconstrucción submuestreada con compressed sensing udando FISTA y muestre sus resultados. Compare con los resultados obtenidos al muestrear con el patrón de submuestreo variable.
 """
 
-# ╔═╡ 8716c337-8256-4f80-9445-c284ac46a391
+# ╔═╡ fe24e290-7f48-4de6-a5f7-d3aa295d069b
+begin
+	M_FISTA_2 = zeros(size(M_COMPLETE_2));#Cambiar esta linea llamando a FISTA
+	heatmap(abs.(M_FISTA_2), color=:grays, c=:grays)
+	title!("Reconstrucción 2 con FISTA")
+	
+end
 
+
+# ╔═╡ 41253dd5-0c36-4791-8b77-970c05610ea1
+md"""
+Podemos observar que la reconstrucción esta vez no es existosa. Esto se debe a que el aliassing formado por el patrón de submuestreo es coherente por lo que la probabilidad de encontrar información en las muestras es menor y la reconstrucción no es posible.
+	"""
 
 # ╔═╡ 304ce439-c439-4941-8fb7-ac0becc10b00
 md"""
@@ -241,16 +306,22 @@ md"""
 > En la siguiente celda importe los datos con los que se trabajará. **Tip**: considere aplicar un *fftshift* a la *raw data*
 """
 
-# ╔═╡ 1273c781-be87-411a-9465-f40f8b7549a8
-
+# ╔═╡ 0fb46f0a-0ae1-454d-b9d9-c75d72a1bb4d
+begin
+    datos_raw_data_3 = matread("data/raw_data_3.mat");
+    raw_data_3 = fftshift(datos_raw_data_3["raw_data_3"]);
+end;
 
 # ╔═╡ 3398dc7e-6653-478c-9a30-8908dadd1455
 md"""
 > A continuación muestre el patrón de submuestreo. Observe que porcentaje del FOV fue muestreado.
 """
 
-# ╔═╡ a6a138d4-3316-4b5a-92dd-86911903e01a
-
+# ╔═╡ d8f00973-d515-4b86-aa91-60f74fd92a99
+begin
+	heatmap(Uv, color=:grays, c=:grays)
+	title!("Patrón de submuestreo con $lineas_muestreadas lineas muestreadas")
+end
 
 # ╔═╡ 2a5d795b-05cf-4291-8fc6-c28c2c6590f3
 md"""
@@ -263,16 +334,31 @@ md"""
 > Muestre la reconstrucción al tomar IDFT de la *raw data*
 """
 
-# ╔═╡ 9376d2fd-f56b-49a8-bbe3-49fb3aed281a
-
+# ╔═╡ 533df102-c842-4814-aa37-b5f0747b27a6
+begin
+	ifft_raw_data_3 = zeros(size(raw_data_3))#Cambiar esta línea
+	heatmap(abs.(ifft_raw_data_3), color=:grays, c=:grays)
+	title!("Reconstrucción de raw data con IDFT")
+end
 
 # ╔═╡ 54c8e7a7-b279-4c76-92db-b35480fcde84
 md"""
 > Posicione los datos en las líneas correspondientes del patrón de submuestreo y reconstruya nuevamente con IDFT. 
 """
 
-# ╔═╡ 96d1c4bc-2605-468d-a7c3-22585a1aee60
-
+# ╔═╡ d54dbe07-df31-4b75-86be-b55c960b386f
+begin
+	M_COMPLETE_3 = zeros(Complex{Float64}, 256,256);
+	local contador_3 = 0
+	for i in 1:255
+		if sum(Uv[i,:])!=0
+			contador_3+=1;
+			M_COMPLETE_3[i,:].=ones(size(Uv[i,:]))#Cambiar esta línea
+		end
+	end
+	heatmap(abs.(ifft(M_COMPLETE_3)),color=:grays, c=:grays)
+	title!("Reconstrucción con IDFT en lineas muestreadas")
+end
 
 # ╔═╡ 794d39cd-480d-4c8c-ba58-868be6b5cf83
 md"""
@@ -285,21 +371,74 @@ md"""
 > Grafique la transformada de Wavelet de la imagen con aliassing
 """
 
-# ╔═╡ 8886715e-b96c-45fd-8784-25505a254b47
-
+# ╔═╡ 4ab42227-93d3-479b-bbef-f25a518d3c59
+begin
+xt = dwt(ifft(M_COMPLETE_3), wavelet(WT.db4, WT.Filter),2)
+heatmap(abs.(xt),color=:grays, c=:grays)
+title!("Transformada de Wavelet imagen con aliassing")
+end
 
 # ╔═╡ 2b78657e-b3de-49cd-a06a-ca020d52da4f
 md"""
-> Modifique FISTA para que ahora resuelva el problema de reconstrucción con Compressed Sensing usando transformada de Wavelet Daubechies 4 con nivel de descomposición 2
+> Modifique FISTA para que reciba los mismos argumentos que antes y ahora resuelva el problema de reconstrucción con Compressed Sensing usando transformada de Wavelet Daubechies 4 con nivel de descomposición 2
 """
 
-# ╔═╡ 4ee68e46-ead0-451d-a642-5d93c9081d36
+# ╔═╡ 021bb58d-8332-40bd-9c4a-3a2b12ebf43f
+begin
 
+function FISTA_WAVELET(M_C, M, lambda, iters, start)
+    L = 1
+    
+    # Definimos el operador G y Gh
+    G(x) = M_C .* fft(dwt(x, wavelet(WT.db4),2))
+    Gh(x) = idwt(ifft(x),wavelet(WT.db4),2)
+    
+    # Definimos el operador proximal
+    Prox(x) = max.(abs.(x) .- lambda/L, 0) .* sign.(x);
+    b=fft(M);
+    # Definimos el operador nabla g
+    NablaG(x) = Gh(G(x) .- b);
+    
+    # Valores iniciales de t, alpha y beta
+    t_old = 1;
+    alpha_old = start;
+    beta_old = copy(alpha_old);
+    
+    # Iteramos
+    for k in 1:iters
+        # Paso 1: Actualizamos alpha con el proximal
+        alpha_new = Prox(beta_old .- (1/L) .* NablaG(beta_old));
+        
+        # Paso 2: Actualizamos t
+        t_new = 0.5 * (1 + sqrt(1 + 4 * t_old^2));
+        
+        # Paso 3: Actualizamos beta
+        beta_new = alpha_new .+ ((t_old - 1) / t_new) .* (alpha_new .- alpha_old);
+        
+        # Preparamos la siguiente iteración
+        t_old = t_new;
+        alpha_old = copy(alpha_new);
+        beta_old = copy(beta_new);
+    end
+    
+    m_fista = alpha_old;
+
+    return m_fista;
+end
+
+end
 
 # ╔═╡ 46f8b317-9107-4f25-8429-31f307a104b1
 md"""
-> Reconstruya la imagen con FISTA
+> Reconstruya la imagen con FISTA_WAVELET
 """
+
+# ╔═╡ e39f13b0-307b-4224-a73f-127cc7a5099b
+begin
+M_FISTA_3 = zeros(size(M_COMPLETE_3)); #Cambiar esta línea
+heatmap(abs.(M_FISTA_3),color=:grays, c=:grays)
+title!("Imagen Reconstruida con FISTA y Wavelet")
+end
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1922,48 +2061,50 @@ version = "1.4.1+1"
 # ╟─e04fa3bc-aaed-42d5-8e1e-adb0dbdce1cc
 # ╟─699016bb-df26-441d-a5e1-51dd42fac3a9
 # ╟─19a19387-c7d8-413d-ad7a-beac4c89d995
-# ╠═d1e290e5-2cb5-4cf2-a641-19db53a8e9f2
+# ╠═95685b42-fed5-4ba8-a847-14f059d0ac5f
 # ╟─618972ad-68b8-44cb-828f-c5223ded77a0
-# ╠═a9dde605-e5ab-480e-b788-3b0c7e247a67
+# ╠═cd9f5f64-7c28-4a3d-b2bf-8695ef1cff2f
 # ╟─100cc04e-d98b-4cde-bed0-1fabf1334e50
 # ╟─93f682c5-d982-4f57-8c98-a58338ecd447
-# ╠═a3370bdf-9cbd-46a9-89b2-9206bb8a808a
+# ╠═1b65cd9e-b957-4254-8889-93a16dff3e45
 # ╟─88cafcd5-83f3-40c9-9cb3-6db923239ee2
-# ╠═83a28eed-e9f9-4916-b66b-b1386076aa28
+# ╠═e68b74c5-a24d-4ef2-a606-e18d326932d7
 # ╟─65a0a2e1-171b-4372-a5ed-422baa227bf9
 # ╟─7305f393-d980-4d96-ac8a-c8b7a7b97313
 # ╟─abf84d09-461b-4cdd-b558-27a14fd5d821
-# ╠═e8fc86c5-5e76-41d7-903a-d34dc8521f06
+# ╠═5f958dbb-9aba-4de2-a028-3806914d7d9d
 # ╟─27a6a6f6-7a42-4d29-8e2e-49e07e883433
 # ╟─2026947d-fca3-4fce-aa71-d5448cc8ce0c
 # ╟─33704741-2834-448f-ae14-9bbd1405c1b4
-# ╠═9e6a6941-02ee-462f-bb05-339c108180b3
+# ╠═63056b90-776c-4430-8f58-a6a038ce6446
 # ╟─fedb235d-3b95-4ce9-b8f8-63e8b86c19b8
-# ╠═5dc059d8-c1c6-458d-b7f9-29688696c47d
+# ╠═9fcd0005-dac9-4905-9eb7-2626622b463a
 # ╟─8a96228c-afee-44ff-bf5b-5d2df3c976cb
 # ╟─880c8ca4-3a81-4356-854c-4614d2d10db4
-# ╠═63f06c5f-4ac6-4b3c-8f13-2564a4477e9f
+# ╠═c6f60baa-422a-4292-8efa-bebd536f67f5
 # ╟─67437b27-c4ed-4dfa-90a6-3ddebcb134eb
-# ╠═c21c0a07-8d14-4686-bd4c-d0642320d245
+# ╠═5c1ad49e-e624-4e1f-9511-be212f0197e7
 # ╟─b07f50cb-dd60-4e41-8c71-d420f1d10726
-# ╠═8716c337-8256-4f80-9445-c284ac46a391
+# ╠═fe24e290-7f48-4de6-a5f7-d3aa295d069b
+# ╟─41253dd5-0c36-4791-8b77-970c05610ea1
 # ╟─304ce439-c439-4941-8fb7-ac0becc10b00
 # ╟─4e7fc011-c70e-4ada-b512-c757140264fa
 # ╟─b28d3724-f21a-45ca-a71f-fb6604aaf838
-# ╠═1273c781-be87-411a-9465-f40f8b7549a8
+# ╠═0fb46f0a-0ae1-454d-b9d9-c75d72a1bb4d
 # ╟─3398dc7e-6653-478c-9a30-8908dadd1455
-# ╠═a6a138d4-3316-4b5a-92dd-86911903e01a
+# ╠═d8f00973-d515-4b86-aa91-60f74fd92a99
 # ╟─2a5d795b-05cf-4291-8fc6-c28c2c6590f3
 # ╟─91862509-70f1-4a00-bbe5-6fcf3e445a6a
-# ╠═9376d2fd-f56b-49a8-bbe3-49fb3aed281a
+# ╠═533df102-c842-4814-aa37-b5f0747b27a6
 # ╟─54c8e7a7-b279-4c76-92db-b35480fcde84
-# ╠═96d1c4bc-2605-468d-a7c3-22585a1aee60
+# ╠═d54dbe07-df31-4b75-86be-b55c960b386f
 # ╟─794d39cd-480d-4c8c-ba58-868be6b5cf83
 # ╟─db3a7893-dfa7-43ca-bc36-2df8e49bde47
-# ╠═8886715e-b96c-45fd-8784-25505a254b47
+# ╠═4ab42227-93d3-479b-bbef-f25a518d3c59
 # ╟─2b78657e-b3de-49cd-a06a-ca020d52da4f
-# ╠═4ee68e46-ead0-451d-a642-5d93c9081d36
+# ╟─021bb58d-8332-40bd-9c4a-3a2b12ebf43f
 # ╟─46f8b317-9107-4f25-8429-31f307a104b1
+# ╠═e39f13b0-307b-4224-a73f-127cc7a5099b
 # ╟─44d99566-5418-41bc-b9e4-b2a93076ae2e
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
