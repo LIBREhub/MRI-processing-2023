@@ -7,5 +7,5 @@ Go to the resources of [this section in the github repository](https://github.co
 Refer to [this section](getting-started.md) to learn how to run the Pluto notebook.
 
 ```@raw html
-<iframe type="text/html" src="../assets/MRIfundamentals.html" style="height:4700px;width:100%;">
+<iframe type="text/html" src="../assets/MRIfundamentals.html" style="height:100vh;width:100%;">
 ```
