@@ -30,7 +30,7 @@ All following times are in Chilean (Santiago) time (currently GMT-4). [Look up y
 | 10:55 | Introduction to the Workshop             | Pablo Irarrázaval               |
 | 11:00 | Theory: Fundamentals of the MRI Signal   | Pablo Irarrázaval               |
 | 11:45 | [Hands-on: Fundamentals of the MRI Signal](fundamentals-of-the-mri-signal.md) | Pablo Irarrázaval               |
-| 12:30 | Launch                                   | -                               |
+| 12:30 | Lunch                                   | -                               |
 | 13:30 | Open Software                            | Carlos Castillo                 |
 | 14:15 | Theory: Simulation                       | Carlos Castillo                 |
 | 15:00 | [Hands-on: Simulation](simulation.md)                     | Carlos Castillo                 |
@@ -48,13 +48,13 @@ All following times are in Chilean (Santiago) time (currently GMT-4). [Look up y
 | 10:45 | Break                                                       | -                                      |
 | 11:00 | Theory: Undersampled Reconstruction with Compressed Sensing   | Pablo Irarrázaval / Belén Bravo        |
 | 11:45 | [Hands-on: Undersampled Reconstruction with Compressed Sensing](compressed-sensing.md) | Belén Bravo                            |
-| 12:30 | Launch                                                      | -                                      |
+| 12:30 | Lunch                                                      | -                                      |
 | 13:30 | Theory: Quantitative Mapping                                | Pablo Irarrázaval / Guillermo Sahonero |
 | 14:15 | [Hands-on: Quantitative Mapping](quantitative-mapping.md)                              | Guillermo Sahonero                     |
 | 15:00 | Break                                                       | -                                      |
 | 15:15 | Theory: Off-Resonance Correction                            | Pablo Irarrázaval / Ronal Coronado     |
 | 16:00 | [Hands-on: Off-Resonance Correction](off-resonance-correction.md)                          | Ronal Coronado                         |
-| 18:00 | Adjourn                                                     | -                                      |
+| 16:45 | Adjourn                                                     | -                                      |
 
 
 ## Feedback and support
