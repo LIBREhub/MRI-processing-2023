@@ -15,7 +15,7 @@ makedocs(
         "3 - Basic Signal Processing" => "basic-signal-processing.md";
         "4 - Parallel Imaging" => "parallel-imaging.md";
         "5 - Compressed Sensing" => "compressed-sensing.md";
-        #"6 - Quantitative Mapping" => "quantitative-mapping.md";
+        "6 - Quantitative Mapping" => "quantitative-mapping.md";
         "7 - Off-Resonance Correction" => "off-resonance-correction.md";
     ],
 )
